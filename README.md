@@ -131,7 +131,24 @@ Overture buildings include OpenStreetMap data (ODbL) and other sources. Each fea
 - Every network request has a 60 s timeout. A request that times out or fails with a 5xx/429 is retried with backoff, and each wait is reported on stderr (silenced by `--quiet`).
 - Overture is read one row group at a time; memory grows with the area (about 340 MB peak for a ~25 km² box of buildings).
 - Output is written to `<path>.part` and renamed on success, so a failed run never leaves a truncated file.
-- Not yet: more datasets, filters, caching, tiling of huge areas, place names, more formats (CSV, Shapefile, GeoPackage), flattened GeoParquet property columns.
+- Not yet: more datasets, filters, caching, tiling of huge areas, place names. See the [roadmap](#roadmap).
+
+## Roadmap
+
+Plans, not promises: nothing here has a date, and the order can change. Ideas and requests are welcome as [issues](https://github.com/swarupBhagwat/bun-gis/issues).
+
+**Next release (v0.2)**
+- More Overture datasets beyond `buildings`, such as places, transportation, addresses and divisions.
+- A release on npm, so `bunx bun-gis` works without the GitHub prefix.
+
+**After that**
+- Filtering: `--where`, `--properties` and `--limit`, so you can download only the features and fields you need.
+- Faster repeat work: a local cache, a `--concurrency` option, and reading the row groups inside a large file in parallel.
+- Place names: `--place "Munich"` instead of typing a bounding box.
+- More output formats (CSV, Shapefile, GeoPackage) and GeoParquet with one column per property, instead of a single JSON `properties` column.
+
+**Exploring**
+- Browsing very large results on the map in the local UI without loading the whole file.
 
 ## Development
 
