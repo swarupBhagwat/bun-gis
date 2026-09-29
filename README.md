@@ -142,8 +142,6 @@ LIVE=1 bun test       # also reads real Overture data for a tiny bbox
 bun run typecheck
 ```
 
-## Support
+## License and support
 
-bun-gis is free and MIT licensed. If it saved you time, you can support its maintenance at [buymeacoffee.com/swarupbhags](https://buymeacoffee.com/swarupbhags).
-
-MIT licensed.
+MIT licensed. bun-gis is free; if it saved you time, you can support its maintenance at [buymeacoffee.com/swarupbhags](https://buymeacoffee.com/swarupbhags).
