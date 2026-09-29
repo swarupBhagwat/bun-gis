@@ -3,7 +3,7 @@
 Download [Overture Maps](https://overturemaps.org) data for a bounding box straight to a local file: GeoJSON, GeoJSONSeq, GeoParquet or KML. Built for [Bun](https://bun.sh); needs Bun ≥ 1.4.
 
 ```bash
-bunx bun-gis overture buildings --bbox 11.575,48.137,11.58,48.14
+bunx github:swarupBhagwat/bun-gis overture buildings --bbox 11.575,48.137,11.58,48.14
 ```
 
 ```text
@@ -16,6 +16,25 @@ Downloading overture buildings...
 ```
 
 Only the requested area is fetched. Overture data is read from cloud GeoParquet with HTTP range requests (a ~500 m box downloads ~6.5 MB out of a ~600 MB file), and output is streamed to disk.
+
+## Install
+
+bun-gis is not on npm yet, so install it from GitHub (Bun ≥ 1.4 is the only requirement):
+
+```bash
+# One-off run, nothing to install (the command above)
+bunx github:swarupBhagwat/bun-gis overture buildings --bbox 11.575,48.137,11.58,48.14
+
+# In a project: adds the CLI (`bunx bun-gis …`) and the library (`import … from "bun-gis"`)
+bun add github:swarupBhagwat/bun-gis
+
+# From source (also needed for the local UI)
+git clone https://github.com/swarupBhagwat/bun-gis && cd bun-gis
+bun install
+bun src/cli/index.ts overture buildings --bbox 11.575,48.137,11.58,48.14
+```
+
+The other examples below write `bunx bun-gis …`, which works after `bun add`; for a one-off run use `bunx github:swarupBhagwat/bun-gis …` instead.
 
 ## CLI
 
@@ -79,7 +98,7 @@ const result = await download({
 
 ## Local web UI (repository only)
 
-A small React app for the same features: draw the area on a map, download, preview the result, and validate saved or uploaded files. It is not part of the npm package.
+A small React app for the same features: draw the area on a map, download, preview the result, and validate saved or uploaded files. It lives in the repository only, so clone it first (see [Install](#install)).
 
 ```bash
 cd ui && bun install && cd ..
